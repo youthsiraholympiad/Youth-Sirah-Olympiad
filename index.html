@@ -1077,15 +1077,15 @@ select.input{
                 উপজেলা<span class="req">*</span>
               </label>
 
-              <select class="input" id="upazila" name="upazila">
-                <option value="">উপজেলা নির্বাচন করুন</option>
-                <option value="গোপালগঞ্জ সদর">গোপালগঞ্জ সদর</option>
-                <option value="কাশিয়ানী">কাশিয়ানী</option>
-                <option value="কোটালীপাড়া">কোটালীপাড়া</option>
-                <option value="মুকসুদপুর">মুকসুদপুর</option>
-                <option value="টুঙ্গিপাড়া">টুঙ্গিপাড়া</option>
-                <option value="__other">অন্যান্য (নিজে লিখুন)</option>
-              </select>
+             <select class="input" id="upazila" name="upazila">
+  <option value="">Select Upazila</option>
+  <option value="Gopalganj Sadar">Gopalganj Sadar</option>
+  <option value="Kashiani">Kashiani</option>
+  <option value="Kotalipara">Kotalipara</option>
+  <option value="Muksudpur">Muksudpur</option>
+  <option value="Tungipara">Tungipara</option>
+  <option value="__other">Other (Enter Manually)</option>
+</select>
 
               <p class="field-error" id="err-upazila"></p>
 
@@ -2263,60 +2263,60 @@ function updatePaymentUI() {
 var INSTITUTIONS = [
 
   {
-    category: 'স্কুল',
+    category: 'School',
     items: [
-      'এস. এম. মডেল সরকারি উচ্চ বিদ্যালয়',
-      'বীণাপাণি সরকারি বালিকা উচ্চ বিদ্যালয়',
-      'গোপালগঞ্জ সরকারি বালিকা উচ্চ বিদ্যালয় ও কলেজ',
-      'গোপালগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ',
-      'গোপালগঞ্জ উচ্চ বিদ্যালয়',
-      'সীতানাথ মথুরানাথ মডেল সরকারি উচ্চ বিদ্যালয়',
-      'গোপালগঞ্জ ইউনিভার্সিটি স্কুল অ্যান্ড কলেজ',
-      'যুগশিখা বালিকা উচ্চ বিদ্যালয়',
-      'শহীদ গুলজার বালিকা উচ্চ বিদ্যালয়',
-      'রঘুনাথপুর দীননাথ উচ্চ বিদ্যালয়',
-      'ওয়াহাব আদর্শ উচ্চ বিদ্যালয়',
-      'সরনাকলী উচ্চ বিদ্যালয়',
-      'চন্দ্রদিঘলিয়া উচ্চ বিদ্যালয়',
-      'শেখ মুজিব আদর্শ উচ্চ বিদ্যালয়',
-      'হাজী খোরশেদ সপ্তপল্লী উচ্চ বিদ্যালয়',
-      'দশপল্লী নেছার উদ্দিন খান উচ্চ বিদ্যালয়',
-      'আরপাড়া ইসলামিয়া উচ্চ বিদ্যালয়',
-      'চার বয়রা ঘোনাপাড়া উচ্চ বিদ্যালয়',
-      'হাজী নাদের আলী ও ছাদেক আলী উচ্চ বিদ্যালয়',
-      'কাশিয়ানী গিরীশ চন্দ্র পাইলট উচ্চ বিদ্যালয়'
+      'S. M. Model Government High School',
+      'Binapani Government Girls\' High School',
+      'Gopalganj Government Girls\' High School and College',
+      'Gopalganj Government Technical School and College',
+      'Gopalganj High School',
+      'Sitanath Mathuranath Model Government High School',
+      'Gopalganj University School and College',
+      'Jugoshikha Girls\' High School',
+      'Shahid Gulzar Girls\' High School',
+      'Raghunathpur Dinanath High School',
+      'Wahab Adarsha High School',
+      'Swarnakali High School',
+      'Chandra Dighalia High School',
+      'Sheikh Mujib Adarsha High School',
+      'Hazi Khorshed Saptapalli High School',
+      'Dashpalli Nechhar Uddin Khan High School',
+      'Arpara Islamia High School',
+      'Char Bayra Ghonapara High School',
+      'Hazi Nader Ali and Sadek Ali High School',
+      'Kashiani Girish Chandra Pilot High School'
     ]
   },
 
   {
-    category: 'কলেজ',
+    category: 'College',
     items: [
-      'গোপালগঞ্জ সরকারি কলেজ',
-      'শেখ ফজিলাতুন্নেছা সরকারি মহিলা কলেজ',
-      'সাতপাড় নজরুল সরকারি কলেজ',
-      'হাবিবুর রহমান কলেজ',
-      'হাজী লাল মিয়া সিটি কলেজ',
-      'এন. হক কলেজ',
-      'গোপালগঞ্জ সায়েন্স অ্যান্ড টেকনোলজি কলেজ',
-      'গোপালগঞ্জ সরকারি টেকনিক্যাল স্কুল ও কলেজ',
-      'টেক্সটাইল ইঞ্জিনিয়ারিং কলেজ, গোপালগঞ্জ',
-      'শেখ সায়েরা খাতুন মেডিকেল কলেজ'
+      'Gopalganj Government College',
+      'Sheikh Fazilatunnesa Government Women\'s College',
+      'Satpar Nazrul Government College',
+      'Habibur Rahman College',
+      'Haji Lalmia City College',
+      'N. Haque College',
+      'Gopalganj Science and Technology College',
+      'Gopalganj Government Technical School and College',
+      'Textile Engineering College, Gopalganj',
+      'Sheikh Sayera Khatun Medical College'
     ]
   },
 
   {
-    category: 'বিশ্ববিদ্যালয় ও উচ্চশিক্ষা',
+    category: 'University & Higher Education',
     items: [
-      'গোপালগঞ্জ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়',
-      'শেখ সায়েরা খাতুন মেডিকেল কলেজ',
-      'টেক্সটাইল ইঞ্জিনিয়ারিং কলেজ, গোপালগঞ্জ',
-      'গোপালগঞ্জ পলিটেকনিক ইনস্টিটিউট',
-      'গোপালগঞ্জ সায়েন্স অ্যান্ড টেকনোলজি কলেজ'
+      'Gopalganj Science and Technology University',
+      'Sheikh Sayera Khatun Medical College',
+      'Textile Engineering College, Gopalganj',
+      'Gopalganj Polytechnic Institute',
+      'Gopalganj Science and Technology College'
     ]
   }
 
 ];
-
+  
 var instituteInput =
   $('#institute');
 
