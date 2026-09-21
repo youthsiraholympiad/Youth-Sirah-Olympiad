@@ -2813,44 +2813,44 @@ function setBusy(on) {
   );
 }
 
-function runServer(
-  payload,
-  success,
-  failure
-) {
+function runServer(payload, success, failure) {
+  var form = document.createElement('form');
 
-  if (
-    window.google &&
-    google.script &&
-    google.script.run
-  ) {
+  form.method = 'POST';
+  form.action =
+    'https://docs.google.com/forms/d/e/1FAIpQLSfJdAnQLAf3ioxPXq0y1BIyApzheXkQ5NHqb6vptdMbUi7faw/formResponse';
+  form.target = 'hiddenGoogleFormFrame';
+  form.style.display = 'none';
 
-    google.script.run
-      .withSuccessHandler(success)
-      .withFailureHandler(failure)
-      .registerUser(payload);
+  var fields = {
+    'entry.5165157': payload.name,
+    'entry.45246055': payload.group,
+    'entry.1806648470': payload.upazila,
+    'entry.215430256': payload.gender,
+    'entry.2016081186': payload.mobile,
+    'entry.1604236925': payload.institute,
+    'entry.359857660': payload.email,
+    'entry.730493845': payload.paymentType,
+    'entry.1005131652': payload.last4
+  };
 
-  } else {
-
-    /*
-     * Demo mode only.
-     * Real website uses Google Apps Script.
-     */
-
-    setTimeout(
-      function () {
-
-        success({
-          success: true,
-          demo: true
-        });
-
-      },
-      1000
-    );
+  for (var name in fields) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = fields[name] || '';
+    form.appendChild(input);
   }
-}
 
+  document.body.appendChild(form);
+
+  form.submit();
+  form.remove();
+
+  setTimeout(function () {
+    success({ success: true });
+  }, 1500);
+}
 function sendRegistration() {
 
   showAlert('');
