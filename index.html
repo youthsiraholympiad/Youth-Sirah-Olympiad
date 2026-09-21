@@ -2837,16 +2837,16 @@ function runServer(payload, success, failure) {
   var form = document.createElement('form');
 
   form.method = 'POST';
-  form.action =
+ form.action =
     'https://docs.google.com/forms/d/e/1FAIpQLSfJdAnQLAf3ioxPXq0y1BIyApzheXkQ5NHqb6vptdMbUi7faw/formResponse';
   form.target = 'hiddenGoogleFormFrame';
   form.style.display = 'none';
 
   var fields = {
     'entry.5165157': payload.name,
-    'entry.45246055': payload.group,
+    'entry.45246055': payload.group === 'A' ? 'Group K' : 'Group KH',
     'entry.1806648470': payload.upazila,
-    'entry.215430256': payload.gender,
+    'entry.215430256': payload.gender === 'Male' ? 'Male' : 'Female',
     'entry.2016081186': payload.mobile,
     'entry.1604236925': payload.institute,
     'entry.359857660': payload.email,
