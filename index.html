@@ -2814,6 +2814,26 @@ function setBusy(on) {
 }
 
 function runServer(payload, success, failure) {
+
+  /* Google Form-এর জন্য hidden iframe তৈরি */
+  var iframe = document.getElementById('hiddenGoogleFormFrame');
+
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+
+    iframe.id = 'hiddenGoogleFormFrame';
+    iframe.name = 'hiddenGoogleFormFrame';
+
+    iframe.style.position = 'fixed';
+    iframe.style.width = '1px';
+    iframe.style.height = '1px';
+    iframe.style.border = '0';
+    iframe.style.left = '-9999px';
+    iframe.style.top = '-9999px';
+
+    document.body.appendChild(iframe);
+  }
+
   var form = document.createElement('form');
 
   form.method = 'POST';
