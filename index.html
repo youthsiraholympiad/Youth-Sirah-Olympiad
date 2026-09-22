@@ -31,7 +31,7 @@
   --line-strong:#cbd5e1;
   --danger:#b91c1c;
   --wa:#15803d;
-  --font-body:'Noto Sans Bengali','Kalpurush','Nirmala UI','Amiri',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Noto Sans Bengali','solaimanlipi','Nirmala UI','Amiri',system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-head:'Noto Serif Bengali','Hind Siliguri','Noto Sans Bengali','Kalpurush','Amiri',serif;
   --r-lg:20px;
   --r-md:14px;
@@ -2270,7 +2270,6 @@ var INSTITUTIONS = [
       'Gopalganj Government Girls\' High School and College',
       'Gopalganj Government Technical School and College',
       'Gopalganj High School',
-      'Sitanath Mathuranath Model Government High School',
       'Gopalganj University School and College',
       'Jugoshikha Girls\' High School',
       'Shahid Gulzar Girls\' High School',
@@ -2292,15 +2291,11 @@ var INSTITUTIONS = [
     category: 'College',
     items: [
       'Gopalganj Government College',
-      'Sheikh Fazilatunnesa Government Women\'s College',
+      'Gopalganj Government Women\'s College',
       'Satpar Nazrul Government College',
       'Habibur Rahman College',
       'Haji Lalmia City College',
       'N. Haque College',
-      'Gopalganj Science and Technology College',
-      'Gopalganj Government Technical School and College',
-      'Textile Engineering College, Gopalganj',
-      'Sheikh Sayera Khatun Medical College'
     ]
   },
 
@@ -2308,10 +2303,9 @@ var INSTITUTIONS = [
     category: 'University & Higher Education',
     items: [
       'Gopalganj Science and Technology University',
-      'Sheikh Sayera Khatun Medical College',
+      'Gopalganj Medical College',
       'Textile Engineering College, Gopalganj',
       'Gopalganj Polytechnic Institute',
-      'Gopalganj Science and Technology College'
     ]
   }
 
@@ -2778,11 +2772,11 @@ function collectPayload() {
       paymentType,
 
     last4:
-      paymentType === 'Cash'
-        ? ''
-        : toEn(
-            form.elements['last4'].value
-          ),
+  paymentType === 'Cash'
+    ? 'Cash'
+    : toEn(
+        form.elements['last4'].value
+      ),
 
     website:
       form.elements['website'].value
