@@ -1161,7 +1161,7 @@ select.input{
 
             <div class="field">
               <label class="label" for="email">
-                ইমেইল<span class="req">*</span>
+                ইমেইল
               </label>
               <input class="input" type="email" id="email" name="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="100" placeholder="example@gmail.com">
 
@@ -1209,6 +1209,10 @@ select.input{
 
               <p class="field-error" id="err-paymentType"></p>
               <div class="pay-info" id="payInfo" hidden></div>
+              
+           <p class="pay-note" role="note">
+    বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।
+</p>
             </fieldset>
 
             <div class="field" id="last4Wrap" hidden>
@@ -1403,15 +1407,15 @@ var CONFIG = {
   payment: {
     bKash: {
       label: 'বিকাশ',
-      number: '01747529614'
+      number: '01575857052'
     },
     Nagad: {
       label: 'নগদ',
-      number: '01747529614'
+      number: '01575857052'
     },
     Rocket: {
       label: 'রকেট',
-      number: '01747529614'
+      number: '01575857052'
     }
   },
 
@@ -1880,15 +1884,18 @@ var VALIDATORS = {
       ? ''
       : '১১ ডিজিটের সঠিক মোবাইল নম্বর দিন।';
   },
+email: function () {
+    var value = textVal('email');
 
-  email: function () {
+    if (!value) {
+        return '';
+    }
 
     return /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/
-      .test(textVal('email'))
-      ? ''
-      : 'সঠিক ইমেইল ঠিকানা দিন।';
-  },
-
+        .test(value)
+        ? ''
+        : 'সঠিক ইমেইল ঠিকানা দিন।';
+},
   paymentType: function () {
 
     return radioVal('paymentType')
