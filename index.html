@@ -1861,7 +1861,10 @@ var VALIDATORS = {
   upazilaOther: function () {
 
     return (
-      textVal('upazila') === '__other' &&
+      (
+    form.elements['upazila'].dataset.value ||
+    textVal('upazila')
+) === '__other'&&
       textVal('upazilaOther').length < 2
     )
       ? 'উপজেলা ও জেলার নাম লিখুন।'
@@ -2135,14 +2138,14 @@ function groupLabel(v) {
 
 function upazilaValue() {
 
-  var u =
+    var u =
+    form.elements['upazila'].dataset.value ||
     textVal('upazila');
 
-  return u === '__other'
+    return u === '__other'
     ? textVal('upazilaOther')
     : u;
 }
-
 function renderSummary() {
 
   var rows = [
@@ -2323,7 +2326,8 @@ var INSTITUTIONS = [
 
 ];
 
-  /* ================================================================
+ 
+/* ================================================================
 UPAZILA CUSTOM SELECT
 ================================================================ */
 
@@ -2357,27 +2361,32 @@ function renderUpazilaSuggestions() {
 
             e.preventDefault();
 
-            if (item === 'Other (Enter Manually)') {
+         if (item === 'Other (Enter Manually)') {
 
-                upazilaInput.value = '__other';
+    upazilaInput.value = 'Other (Enter Manually)';
+    upazilaInput.dataset.value = '__other';
 
-                $('#otherWrap').hidden = false;
+    $('#otherWrap').hidden = false;
 
-            } else {
+    upazilaSuggestionBox.classList.remove('open');
+    upazilaSuggestionBox.textContent = '';
 
-                upazilaInput.value = item;
+} else {
 
-                $('#otherWrap').hidden = true;
+    upazilaInput.value = item;
+    upazilaInput.dataset.value = item;
 
-                form.elements['upazilaOther'].value = '';
+    $('#otherWrap').hidden = true;
 
-                setError('upazilaOther', '');
-            }
+    form.elements['upazilaOther'].value = '';
 
-            upazilaSuggestionBox.classList.remove('open');
+    setError('upazilaOther', '');
 
-            checkField('upazila');
-        });
+    upazilaSuggestionBox.classList.remove('open');
+    upazilaSuggestionBox.textContent = '';
+}
+
+checkField('upazila');
 
         upazilaSuggestionBox.appendChild(option);
     });
