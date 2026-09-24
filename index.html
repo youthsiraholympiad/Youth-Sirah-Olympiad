@@ -1077,7 +1077,21 @@ select.input{
                 উপজেলা<span class="req">*</span>
               </label>
 
-             <select class="input" id="upazila" name="upazila">
+            <div class="institution-wrap">
+    <input
+        class="input"
+        type="text"
+        id="upazila"
+        name="upazila"
+        autocomplete="off"
+        placeholder="Select Upazila"
+        readonly
+    >
+    <div
+        class="institution-suggestions"
+        id="upazilaSuggestions">
+    </div>
+</div>
   <option value="">Select Upazila</option>
   <option value="Gopalganj Sadar">Gopalganj Sadar</option>
   <option value="Kashiani">Kashiani</option>
@@ -1210,9 +1224,6 @@ select.input{
               <p class="field-error" id="err-paymentType"></p>
               <div class="pay-info" id="payInfo" hidden></div>
               
-           <p class="pay-note" role="note">
-    বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।
-</p>
             </fieldset>
 
             <div class="field" id="last4Wrap" hidden>
@@ -2254,14 +2265,7 @@ notice.textContent =
     'বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।';
 
 info.appendChild(notice);
-
-    var notice = document.createElement('p');
-    notice.className = 'fee-special';
-    notice.setAttribute('role', 'note');
-    notice.textContent =
-        'বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।';
-
-    info.appendChild(notice);
+info.appendChild(notice);
 }
 
 /* ================================================================
@@ -2318,6 +2322,92 @@ var INSTITUTIONS = [
   }
 
 ];
+
+  /* ================================================================
+UPAZILA CUSTOM SELECT
+================================================================ */
+
+var upazilaInput = $('#upazila');
+var upazilaSuggestionBox = $('#upazilaSuggestions');
+
+var UPAZILAS = [
+    'Gopalganj Sadar',
+    'Kashiani',
+    'Kotalipara',
+    'Muksudpur',
+    'Tungipara',
+    'Other (Enter Manually)'
+];
+
+var activeUpazila = -1;
+
+function renderUpazilaSuggestions() {
+
+    upazilaSuggestionBox.textContent = '';
+
+    UPAZILAS.forEach(function (item, index) {
+
+        var option = document.createElement('div');
+
+        option.className = 'institution-option';
+
+        option.textContent = item;
+
+        option.addEventListener('mousedown', function (e) {
+
+            e.preventDefault();
+
+            if (item === 'Other (Enter Manually)') {
+
+                upazilaInput.value = '__other';
+
+                $('#otherWrap').hidden = false;
+
+            } else {
+
+                upazilaInput.value = item;
+
+                $('#otherWrap').hidden = true;
+
+                form.elements['upazilaOther'].value = '';
+
+                setError('upazilaOther', '');
+            }
+
+            upazilaSuggestionBox.classList.remove('open');
+
+            checkField('upazila');
+        });
+
+        upazilaSuggestionBox.appendChild(option);
+    });
+
+    activeUpazila = -1;
+
+    upazilaSuggestionBox.classList.add('open');
+}
+
+upazilaInput.addEventListener(
+    'click',
+    renderUpazilaSuggestions
+);
+
+upazilaInput.addEventListener(
+    'focus',
+    renderUpazilaSuggestions
+);
+
+document.addEventListener('click', function (e) {
+
+    if (
+        !e.target.closest ||
+        !e.target.closest('#upazilaSuggestions') &&
+        !e.target.closest('#upazila')
+    ) {
+        upazilaSuggestionBox.classList.remove('open');
+    }
+
+});
   
 var instituteInput =
   $('#institute');
@@ -2328,7 +2418,7 @@ var suggestionBox =
 var activeSuggestion = -1;
 
 function getInstitutionItems() {
-
+  
   var query =
     instituteInput.value
       .trim()
@@ -2338,7 +2428,7 @@ function getInstitutionItems() {
 
   INSTITUTIONS.forEach(
     function (group) {
-
+      
       var filtered =
         group.items.filter(
           function (item) {
@@ -2571,35 +2661,6 @@ form.elements['last4']
 
     }
   );
-
-form.elements['upazila']
-  .addEventListener(
-    'change',
-    function () {
-
-      var other =
-        this.value === '__other';
-
-      $('#otherWrap').hidden =
-        !other;
-
-      if (!other) {
-
-        form.elements[
-          'upazilaOther'
-        ].value = '';
-
-        setError(
-          'upazilaOther',
-          ''
-        );
-      }
-
-      checkField('upazila');
-
-    }
-  );
-
 
 form.addEventListener(
   'focusout',
