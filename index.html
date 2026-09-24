@@ -1072,22 +1072,25 @@ select.input{
           <div class="step-panel" data-step="2">
             <span class="step-tag">ধাপ ২</span>
 
-            <div class="field">
-             <div class="field">
+          <div class="field">
 <label class="label" for="upazila">
 উপজে লা<span class="req">*</span>
 </label>
-
-<select class="input" id="upazila" name="upazila">
-<option value="">Select Upazila</option>
-<option value="Gopalganj Sadar">Gopalganj Sadar</option>
-<option value="Kashiani">Kashiani</option>
-<option value="Kotalipara">Kotalipara</option>
-<option value="Muksudpur">Muksudpur</option>
-<option value="Tungipara">Tungipara</option>
-<option value="__other">Other (Enter Manually)</option>
-</select>
-
+<div class="institution-wrap">
+<input
+class="input"
+type="text"
+id="upazila"
+name="upazila"
+autocomplete="off"
+placeholder="Select Upazila"
+readonly
+>
+<div
+class="institution-suggestions"
+id="upazilaSuggestions">
+</div>
+</div>
 <p class="field-error" id="err-upazila"></p>
 
 <div id="otherWrap" hidden style="margin-top:10px">
@@ -1845,23 +1848,26 @@ var VALIDATORS = {
   },
 
   upazila: function () {
-    return textVal('upazila')
-      ? ''
-      : 'উপজেলা নির্বাচন করুন।';
-  },
+var value =
+form.elements['upazila'].dataset.value ||
+textVal('upazila');
 
-  upazilaOther: function () {
+return value
+? ''
+: 'উপজেলা নির্বাচন করুন।';
+},
 
-    return (
-      (
-    form.elements['upazila'].dataset.value ||
-    textVal('upazila')
-) === '__other'&&
-      textVal('upazilaOther').length < 2
-    )
-      ? 'উপজেলা ও জেলার নাম লিখুন।'
-      : '';
-  },
+upazilaOther: function () {
+return (
+(
+form.elements['upazila'].dataset.value ||
+textVal('upazila')
+) === 'Enter Manually Other' &&
+textVal('upazilaOther').length < 2
+)
+? 'উপজেলা ও জেলার নাম লিখুন।'
+: '';
+},
 
   gender: function () {
     return radioVal('gender')
@@ -2260,8 +2266,94 @@ notice.textContent =
     'বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।';
 
 info.appendChild(notice);
-info.appendChild(notice);
 }
+
+  /* ================================================================
+UPAZILA AUTOCOMPLETE
+================================================================ */
+
+var upazilaInput = $('#upazila');
+var upazilaSuggestionBox = $('#upazilaSuggestions');
+
+var UPAZILAS = [
+    'Gopalganj Sadar',
+    'Kashiani',
+    'Kotalipara',
+    'Muksudpur',
+    'Tungipara',
+    'Other (Enter Manually)'
+];
+
+function renderUpazilaSuggestions() {
+
+    upazilaSuggestionBox.textContent = '';
+
+    UPAZILAS.forEach(function (item) {
+
+        var option = document.createElement('div');
+
+        option.className = 'institution-option';
+        option.textContent = item;
+
+        option.addEventListener(
+            'mousedown',
+            function (e) {
+
+                e.preventDefault();
+
+                upazilaInput.value = item;
+                upazilaInput.dataset.value =
+                    item === 'Other (Enter Manually)'
+                    ? '__other'
+                    : item;
+
+                if (item === 'Other (Enter Manually)') {
+                    $('#otherWrap').hidden = false;
+                    form.elements['upazilaOther'].value = '';
+                    setError('upazilaOther', '');
+                } else {
+                    $('#otherWrap').hidden = true;
+                    form.elements['upazilaOther'].value = '';
+                    setError('upazilaOther', '');
+                }
+
+                upazilaSuggestionBox.classList.remove('open');
+
+                checkField('upazila');
+            }
+        );
+
+        upazilaSuggestionBox.appendChild(option);
+    });
+
+    upazilaSuggestionBox.classList.add('open');
+}
+
+upazilaInput.addEventListener(
+    'click',
+    renderUpazilaSuggestions
+);
+
+upazilaInput.addEventListener(
+    'focus',
+    renderUpazilaSuggestions
+);
+
+document.addEventListener(
+    'click',
+    function (e) {
+
+        if (
+            !e.target.closest ||
+            (
+                !e.target.closest('#upazila') &&
+                !e.target.closest('#upazilaSuggestions')
+            )
+        ) {
+            upazilaSuggestionBox.classList.remove('open');
+        }
+    }
+);
 
 /* ================================================================
    INSTITUTION AUTOCOMPLETE
@@ -2317,8 +2409,6 @@ var INSTITUTIONS = [
   }
 
 ];
-
- });
   
 var instituteInput =
   $('#institute');
