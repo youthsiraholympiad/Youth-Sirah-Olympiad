@@ -2199,68 +2199,6 @@ function renderSummary() {
    ================================================================ */
 
 function updatePaymentUI() {
-
-  var type =
-    radioVal('paymentType');
-
-  var wrap =
-    $('#last4Wrap');
-
-  var info =
-    $('#payInfo');
-
-  info.textContent = '';
-
-  if (!type) {
-
-    wrap.hidden = true;
-    info.hidden = true;
-
-    return;
-  }
-
-  info.hidden = false;
-
-  if (type === 'Cash') {
-
-    wrap.hidden = true;
-
-    form.elements['last4'].value = '';
-
-    setError('last4', '');
-
-    info.textContent =
-      'ক্যাশ নির্বাচন করলে আয়োজকদের কাছে সরাসরি ' +
-      CONFIG.fee +
-      ' ফি প্রদান করুন।';
-
-    return;
-  }
-
-  wrap.hidden = false;
-
-  var p =
-    CONFIG.payment[type];
-
-  var lead =
-    document.createElement('span');
-
-  lead.textContent =
-    'নিচের ' +
-    p.label +
-    ' নম্বরে ' +
-    CONFIG.fee +
-    ' পাঠান:';
-
-  var number =
-    document.createElement('b');
-
-  number.textContent =
-    p.number;
-
-  info.appendChild(lead);
-  info.appendChild(number);
-}function updatePaymentUI() {
     var type = radioVal('paymentType');
     var wrap = $('#last4Wrap');
     var info = $('#payInfo');
@@ -2306,14 +2244,25 @@ function updatePaymentUI() {
     info.appendChild(lead);
     info.appendChild(number);
 
+  var notice = document.createElement('p');
+
+notice.className = 'fee-special';
+
+notice.setAttribute('role', 'note');
+
+notice.textContent =
+    'বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।';
+
+info.appendChild(notice);
+
     var notice = document.createElement('p');
     notice.className = 'fee-special';
+    notice.setAttribute('role', 'note');
     notice.textContent =
         'বিশেষ দ্রষ্টব্যঃ অনলাইন পেমেন্টের ক্ষেত্রে অবশ্যই Send Money করতে হবে।';
 
     info.appendChild(notice);
 }
-
 
 /* ================================================================
    INSTITUTION AUTOCOMPLETE
