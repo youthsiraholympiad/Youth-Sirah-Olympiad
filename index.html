@@ -787,14 +787,13 @@ select.input{
       </article>
     </div>
 
-    <div class="syllabus-link">
-      <span>
-        <svg class="icon"><use href="#i-book"/></svg>
-        প্রতিযোগিতার নির্ধারিত বই: “তোমাকে ভালোবাসি হে নবী!”
-      </span>
-      <a class="btn btn-outline" href="#books">বইয়ের বিবরণ দেখুন</a>
-    </div>
-  </div>
+  <div class="syllabus-link">
+     <span>
+       <svg class="icon"><use href="#i-book"/></svg>
+       গ্রুপ 'ক' (ষষ্ঠ-দশম): "খাতামুল আম্বিয়া" | গ্রুপ 'খ' (কলেজ/ভার্সিটি): "তোমাকে ভালোবাসি হে নবী!"
+     </span>
+     <a class="btn btn-outline" href="#books">বইসমূহের বিবরণ দেখুন</a>
+   </div>
 </section>
 
 <section class="section" id="rules">
@@ -907,49 +906,89 @@ select.input{
   <div class="container">
     <div class="section-head">
       <h2>বইসমূহ</h2>
-      <p>প্রতিযোগিতার নির্ধারিত বই</p>
+      <p>প্রতিযোগিতার নির্ধারিত বইসমূহ</p>
     </div>
 
-    <div class="card book-card">
-      <div class="book-cover" id="bookCover">
-        <div class="book-ph">
-          <svg class="icon"><use href="#i-book"/></svg>
-          <b>বইয়ের প্রচ্ছদ</b>
-          <span>ছবি এখানে বসবে</span>
+    <div class="card book-card" style="display: flex; flex-direction: column; gap: 32px;">
+      
+      <!-- ১ম বই: খাতামুল আম্বিয়া (গ্রুপ ক) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: center;">
+        <div class="book-cover" id="khatamCover">
+          <div class="book-ph">
+            <svg class="icon"><use href="#i-book"/></svg>
+            <b>বইয়ের প্রচ্ছদ</b>
+            <span>ছবি লোড হচ্ছে...</span>
+          </div>
+        </div>
+        <div class="book-info">
+          <span style="display:inline-block; padding: 4px 12px; background: #e6f4ea; color: #137333; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px;">
+            গ্রুপ 'ক' (ষষ্ঠ থেকে দশম শ্রেণী)
+          </span>
+          <h3>"খাতামুল আম্বিয়া"</h3>
+          <dl class="meta">
+            <div><dt>লেখক</dt><dd>মুফতী তকী উসমানী (রহি.)</dd></div>
+            <div><dt>প্রকাশনী</dt><dd>কালান্তর প্রকাশনী</dd></div>
+            <div><dt>পৃষ্ঠা</dt><dd>১৪৪</dd></div>
+          </dl>
+          <div class="price">
+            <s>মুদ্রিত মূল্য ৳৮০</s>
+            <strong>৳৭০</strong>
+            <em>বিশেষ বুথ মূল্য</em>
+          </div>
+          <p class="book-where">
+            <svg class="icon"><use href="#i-pin"/></svg>
+            গোপালগঞ্জ মডেল মসজিদের সামনের বুথ থেকে সংগ্রহযোগ্য।
+          </p>
+          <div class="book-cta">
+            <button type="button" class="btn btn-primary btn-lg buyBtn">বই কিনুন</button>
+            <a class="btn btn-outline btn-lg" id="khatamPdf" href="#" target="_blank" rel="noopener noreferrer">
+              <svg class="icon"><use href="#i-download"/></svg>
+              ফ্রি PDF ডাউনলোড
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="book-info">
-        <h3>“তোমাকে ভালোবাসি হে নবী!”</h3>
+      <hr style="border: 0; border-top: 1px solid var(--line); margin: 8px 0;">
 
-        <dl class="meta">
-          <div><dt>লেখক</dt><dd>গুরুদত্ত সিং</dd></div>
-          <div><dt>প্রকাশনী</dt><dd>দারুল কলম</dd></div>
-          <div><dt>পৃষ্ঠা</dt><dd>১০৮</dd></div>
-        </dl>
-
-        <div class="price">
-          <s>মুদ্রিত মূল্য ৳১২০</s>
-          <strong>৳১০০</strong>
-          <em>বিশেষ বুথ মূল্য</em>
+      <!-- ২য় বই: তোমাকে ভালোবাসি হে নবী! (গ্রুপ খ) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: center;">
+        <div class="book-cover" id="bookCover">
+          <div class="book-ph">
+            <svg class="icon"><use href="#i-book"/></svg>
+            <b>বইয়ের প্রচ্ছদ</b>
+            <span>ছবি লোড হচ্ছে...</span>
+          </div>
         </div>
-
-        <p class="book-where">
-          <svg class="icon"><use href="#i-pin"/></svg>
-          গোপালগঞ্জ মডেল মসজিদের সামনের বুথ থেকে সংগ্রহযোগ্য।
-        </p>
-
-        <div class="book-cta">
-          <button type="button" class="btn btn-primary btn-lg" id="buyBtn">বই কিনুন</button>
-
-          <a class="btn btn-outline btn-lg" data-pdf href="#" target="_blank" rel="noopener noreferrer">
-            <svg class="icon"><use href="#i-download"/></svg>
-            ফ্রি PDF ডাউনলোড
-          </a>
+        <div class="book-info">
+          <span style="display:inline-block; padding: 4px 12px; background: #fef7e0; color: #b06000; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px;">
+            গ্রুপ 'খ' (কলেজ ও বিশ্ববিদ্যালয়)
+          </span>
+          <h3>"তোমাকে ভালোবাসি হে নবী!"</h3>
+          <dl class="meta">
+            <div><dt>লেখক</dt><dd>গুরুদত্ত সিং</dd></div>
+            <div><dt>প্রকাশনী</dt><dd>দারুল কলম</dd></div>
+            <div><dt>পৃষ্ঠা</dt><dd>১০৮</dd></div>
+          </dl>
+          <div class="price">
+            <s>মুদ্রিত মূল্য ৳১২০</s>
+            <strong>৳১০০</strong>
+            <em>বিশেষ বুথ মূল্য</em>
+          </div>
+          <p class="book-where">
+            <svg class="icon"><use href="#i-pin"/></svg>
+            গোপালগঞ্জ মডেল মসজিদের সামনের বুথ থেকে সংগ্রহযোগ্য।
+          </p>
+          <div class="book-cta">
+            <button type="button" class="btn btn-primary btn-lg buyBtn">বই কিনুন</button>
+            <a class="btn btn-outline btn-lg" data-pdf href="#" target="_blank" rel="noopener noreferrer">
+              <svg class="icon"><use href="#i-download"/></svg>
+              ফ্রি PDF ডাউনলোড
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-
+      
     <div class="grid two" style="margin-top:16px">
       <figure class="hadith" style="margin:0">
         <p class="ar" lang="ar" dir="rtl">
@@ -1403,7 +1442,10 @@ var CONFIG = {
   logoUrl: 'https://lh3.googleusercontent.com/d/1gjieO5gN2ytkcLzr3CyF9uc_T-rdcr0G',
   bannerUrl: 'https://lh3.googleusercontent.com/d/18bs-RadgrmDKyleRTHMdiPnWKjma2hep',
   bookCoverUrl: 'https://lh3.googleusercontent.com/d/15X2UOT3ktoCpxBnePhmzya8CFech6LZ2',
-
+// খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ ও ফ্রি PDF লিংক
+  khatamulAmbiyaCoverUrl: 'https://lh3.googleusercontent.com/d/1jkpbJyD1C7xj_DEAU-h_zf-rlOb1mmZa',
+  khatamulAmbiyaPdfUrl: 'https://lh3.googleusercontent.com/d/1wXR8fl_dYlOF1g9XYum0LSR0gh5LH2MG',
+  
   whatsappSupportUrl: 'https://wa.me/8801989017691',
   callSupportUrl: 'tel:+8801989017691',
 
@@ -1520,6 +1562,25 @@ function applyConfig() {
   }
 }
 
+  if (CONFIG.khatamulAmbiyaCoverUrl) {
+     var khatamCover = $('#khatamCover');
+     if (khatamCover) {
+       khatamCover.textContent = '';
+       khatamCover.appendChild(
+         makeImg(
+           CONFIG.khatamulAmbiyaCoverUrl,
+           'খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ'
+         )
+       );
+     }
+   }
+
+   if (CONFIG.khatamulAmbiyaPdfUrl) {
+     var khatamPdf = $('#khatamPdf');
+     if (khatamPdf) {
+       khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
+     }
+   }
 
 /* ================================================================
    NAVIGATION
