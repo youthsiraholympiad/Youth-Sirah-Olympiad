@@ -933,7 +933,7 @@ select.input{
             গোপালগঞ্জ মডেল মসজিদের সামনের বুথ থেকে সংগ্রহযোগ্য।
           </p>
           <div class="book-cta">
-            <button type="button" class="btn btn-primary btn-lg buyBtn">বই কিনুন</button>
+            <button type="button" class="btn btn-primary btn-lg buyBtn" data-book="khatam">বই কিনুন</button>
             <a class="btn btn-outline btn-lg" id="khatamPdf" href="#" target="_blank" rel="noopener noreferrer">
               <svg class="icon"><use href="#i-download"/></svg>
               ফ্রি PDF ডাউনলোড
@@ -973,7 +973,7 @@ select.input{
             গোপালগঞ্জ মডেল মসজিদের সামনের বুথ থেকে সংগ্রহযোগ্য।
           </p>
           <div class="book-cta">
-            <button type="button" class="btn btn-primary btn-lg buyBtn">বই কিনুন</button>
+            <button type="button" class="btn btn-primary btn-lg buyBtn" data-book="nabi">বই কিনুন</button>
             <a class="btn btn-outline btn-lg" data-pdf href="#" target="_blank" rel="noopener noreferrer">
               <svg class="icon"><use href="#i-download"/></svg>
               ফ্রি PDF ডাউনলোড
@@ -1384,7 +1384,7 @@ placeholder="Enter Upazila and District Name">
 
     <h3 id="buyTitle" style="margin-top:0">বই কোথায় পাবেন</h3>
 
-    <p>“তোমাকে ভালোবাসি হে নবী!” বইটি সংগ্রহ করতে নিচের তথ্য দেখুন।</p>
+    <p id="buyDescription">“তোমাকে ভালোবাসি হে নবী!” বইটি সংগ্রহ করতে নিচের তথ্য দেখুন।</p>
 
     <ul class="info-list">
 
@@ -1395,7 +1395,7 @@ placeholder="Enter Upazila and District Name">
 
       <li>
         <svg class="icon"><use href="#i-wallet"/></svg>
-        <span>মুদ্রিত মূল্য ৳১২০, বিশেষ বুথ মূল্য ৳১০০।</span>
+        <span id="buyPrice">মুদ্রিত মূল্য ৳১২০, বিশেষ বুথ মূল্য ৳১০০।</span>
       </li>
 
       <li>
@@ -1760,12 +1760,36 @@ function closeModal(id) {
 }
 
 $$('.buyBtn').forEach(function (button) {
+
   button.addEventListener(
     'click',
     function () {
+
+      var type = button.getAttribute('data-book');
+
+      if (type === 'khatam') {
+        $('#buyTitle').textContent = 'বই কোথায় পাবেন';
+
+        $('#buyDescription').textContent =
+          '“সীরাতে খাতামুল আম্বিয়া” বইটি সংগ্রহ করতে নিচের তথ্য দেখুন।';
+
+        $('#buyPrice').textContent =
+          'মুদ্রিত মূল্য ৳৮০, বিশেষ বুথ মূল্য ৳৭০।';
+
+      } else if (type === 'nabi') {
+        $('#buyTitle').textContent = 'বই কোথায় পাবেন';
+
+        $('#buyDescription').textContent =
+          '“তোমাকে ভালোবাসি হে নবী!” বইটি সংগ্রহ করতে নিচের তথ্য দেখুন।';
+
+        $('#buyPrice').textContent =
+          'মুদ্রিত মূল্য ৳১২০, বিশেষ বুথ মূল্য ৳১০০।';
+      }
+
       openModal('buyModal');
     }
   );
+
 });
 
 $$('[data-close]').forEach(function (button) {
