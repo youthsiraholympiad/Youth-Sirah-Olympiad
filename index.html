@@ -787,44 +787,7 @@ select.input{
       </article>
     </div>
 
-if (CONFIG.logoUrl) {
-    var brandLogo = $('#brandLogo');
-    if (brandLogo) {
-      brandLogo.textContent = '';
-      brandLogo.appendChild(makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট লোগো'));
-    }
-  }
 
-  if (CONFIG.bannerUrl) {
-    var banner = $('#banner');
-    if (banner) {
-      banner.textContent = '';
-      banner.appendChild(makeImg(CONFIG.bannerUrl, 'প্রতিযোগিতার ব্যানার'));
-    }
-  }
-
-  if (CONFIG.khatamulAmbiyaCoverUrl) {
-    var khatamCover = $('#khatamCover');
-    if (khatamCover) {
-      khatamCover.textContent = '';
-      khatamCover.appendChild(makeImg(CONFIG.khatamulAmbiyaCoverUrl, 'সিরাতে খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ'));
-    }
-  }
-
-  if (CONFIG.bookCoverUrl) {
-    var bookCover = $('#bookCover');
-    if (bookCover) {
-      bookCover.textContent = '';
-      bookCover.appendChild(makeImg(CONFIG.bookCoverUrl, 'তোমাকে ভালোবাসি হে নবী! বইয়ের প্রচ্ছদ'));
-    }
-  }
-
-  if (CONFIG.khatamulAmbiyaPdfUrl) {
-    var khatamPdf = $('#khatamPdf');
-    if (khatamPdf) {
-      khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
-    }
-  }
 </section>
 
 <section class="section" id="rules">
