@@ -787,13 +787,44 @@ select.input{
       </article>
     </div>
 
-  <div class="syllabus-link">
-     <span>
-       <svg class="icon"><use href="#i-book"/></svg>
-       গ্রুপ 'ক' (ষষ্ঠ-দশম): "খাতামুল আম্বিয়া" | গ্রুপ 'খ' (কলেজ/ভার্সিটি): "তোমাকে ভালোবাসি হে নবী!"
-     </span>
-     <a class="btn btn-outline" href="#books">বইসমূহের বিবরণ দেখুন</a>
-   </div>
+if (CONFIG.logoUrl) {
+    var brandLogo = $('#brandLogo');
+    if (brandLogo) {
+      brandLogo.textContent = '';
+      brandLogo.appendChild(makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট লোগো'));
+    }
+  }
+
+  if (CONFIG.bannerUrl) {
+    var banner = $('#banner');
+    if (banner) {
+      banner.textContent = '';
+      banner.appendChild(makeImg(CONFIG.bannerUrl, 'প্রতিযোগিতার ব্যানার'));
+    }
+  }
+
+  if (CONFIG.khatamulAmbiyaCoverUrl) {
+    var khatamCover = $('#khatamCover');
+    if (khatamCover) {
+      khatamCover.textContent = '';
+      khatamCover.appendChild(makeImg(CONFIG.khatamulAmbiyaCoverUrl, 'সিরাতে খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ'));
+    }
+  }
+
+  if (CONFIG.bookCoverUrl) {
+    var bookCover = $('#bookCover');
+    if (bookCover) {
+      bookCover.textContent = '';
+      bookCover.appendChild(makeImg(CONFIG.bookCoverUrl, 'তোমাকে ভালোবাসি হে নবী! বইয়ের প্রচ্ছদ'));
+    }
+  }
+
+  if (CONFIG.khatamulAmbiyaPdfUrl) {
+    var khatamPdf = $('#khatamPdf');
+    if (khatamPdf) {
+      khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
+    }
+  }
 </section>
 
 <section class="section" id="rules">
@@ -924,7 +955,7 @@ select.input{
           <span style="display:inline-block; padding: 4px 12px; background: #e6f4ea; color: #137333; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px;">
             গ্রুপ 'ক' (ষষ্ঠ থেকে দশম শ্রেণী)
           </span>
-          <h3>"খাতামুল আম্বিয়া"</h3>
+          <h3>"সীরাতে খাতামুল আম্বিয়া"</h3>
           <dl class="meta">
             <div><dt>লেখক</dt><dd>মুফতী তকী উসমানী (রহি.)</dd></div>
             <div><dt>প্রকাশনী</dt><dd>কালান্তর প্রকাশনী</dd></div>
@@ -1531,57 +1562,44 @@ function applyConfig() {
   });
 
   if (CONFIG.logoUrl) {
-    $$('.js-logo').forEach(function (box) {
-      box.textContent = '';
-      box.appendChild(
-        makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট গোপালগঞ্জ')
-      );
-    });
+    var brandLogo = $('#brandLogo');
+    if (brandLogo) {
+      brandLogo.textContent = '';
+      brandLogo.appendChild(makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট লোগো'));
+    }
   }
 
   if (CONFIG.bannerUrl) {
-    var banner = $('#bannerBox');
-    banner.textContent = '';
-    banner.appendChild(
-      makeImg(
-        CONFIG.bannerUrl,
-        'ইয়ুথ সীরাহ অলিম্পিয়াড ২০২৬ ব্যানার'
-      )
-    );
+    var banner = $('#banner');
+    if (banner) {
+      banner.textContent = '';
+      banner.appendChild(makeImg(CONFIG.bannerUrl, 'প্রতিযোগিতার ব্যানার'));
+    }
+  }
+
+  if (CONFIG.khatamulAmbiyaCoverUrl) {
+    var khatamCover = $('#khatamCover');
+    if (khatamCover) {
+      khatamCover.textContent = '';
+      khatamCover.appendChild(makeImg(CONFIG.khatamulAmbiyaCoverUrl, 'সিরাতে খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ'));
+    }
   }
 
   if (CONFIG.bookCoverUrl) {
-    var cover = $('#bookCover');
-    cover.textContent = '';
-    cover.appendChild(
-      makeImg(
-        CONFIG.bookCoverUrl,
-        'তোমাকে ভালোবাসি হে নবী! বইয়ের প্রচ্ছদ'
-      )
-    );
+    var bookCover = $('#bookCover');
+    if (bookCover) {
+      bookCover.textContent = '';
+      bookCover.appendChild(makeImg(CONFIG.bookCoverUrl, 'তোমাকে ভালোবাসি হে নবী! বইয়ের প্রচ্ছদ'));
+    }
   }
-}
 
-  if (CONFIG.khatamulAmbiyaCoverUrl) {
-     var khatamCover = $('#khatamCover');
-     if (khatamCover) {
-       khatamCover.textContent = '';
-       khatamCover.appendChild(
-         makeImg(
-           CONFIG.khatamulAmbiyaCoverUrl,
-           'খাতামুল আম্বিয়া বইয়ের প্রচ্ছদ'
-         )
-       );
-     }
-   }
-
-   if (CONFIG.khatamulAmbiyaPdfUrl) {
-     var khatamPdf = $('#khatamPdf');
-     if (khatamPdf) {
-       khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
-     }
-   }
-
+  if (CONFIG.khatamulAmbiyaPdfUrl) {
+    var khatamPdf = $('#khatamPdf');
+    if (khatamPdf) {
+      khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
+    }
+  }
+  
 /* ================================================================
    NAVIGATION
    ================================================================ */
@@ -2962,8 +2980,8 @@ function runServer(payload, success, failure) {
   var form = document.createElement('form');
 
   form.method = 'POST';
- form.action =
-    'https://docs.google.com/forms/d/e/1FAIpQLSfJdAnQLAf3ioxPXq0y1BIyApzheXkQ5NHqb6vptdMbUi7faw/formResponse';
+form.action =
+'https://docs.google.com/forms/d/e/1FAIpQLSfJdAnQLAf3ioxPXq0y1BIyApzheXkQ5NHqb6vptdMbUi7faw/formResponse';
   form.target = 'hiddenGoogleFormFrame';
   form.style.display = 'none';
 
