@@ -1759,12 +1759,14 @@ function closeModal(id) {
   }
 }
 
-$('#buyBtn').addEventListener(
-  'click',
-  function () {
-    openModal('buyModal');
-  }
-);
+$$('.buyBtn').forEach(function (button) {
+  button.addEventListener(
+    'click',
+    function () {
+      openModal('buyModal');
+    }
+  );
+});
 
 $$('[data-close]').forEach(function (button) {
 
