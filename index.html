@@ -1555,16 +1555,17 @@ function applyConfig() {
     }
   }
 
-  if (CONFIG.khatamulAmbiyaPdfUrl) {
-    var khatamPdf = $('#khatamPdf');
-    if (khatamPdf) {
-      khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
-    }
+if (CONFIG.khatamulAmbiyaPdfUrl) {
+  var khatamPdf = $('#khatamPdf');
+  if (khatamPdf) {
+    khatamPdf.href = CONFIG.khatamulAmbiyaPdfUrl;
   }
-  
+}
+}
+ 
 /* ================================================================
-   NAVIGATION
-   ================================================================ */
+NAVIGATION
+================================================================ */
 
 var menuBtn = $('#menuBtn');
 var mobileNav = $('#mobileNav');
