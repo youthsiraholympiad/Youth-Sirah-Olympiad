@@ -1525,15 +1525,14 @@ function applyConfig() {
   });
 
   if (CONFIG.logoUrl) {
-    var brandLogo = $('#brandLogo');
-    if (brandLogo) {
-      brandLogo.textContent = '';
-      brandLogo.appendChild(makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট লোগো'));
-    }
-  }
+  $$('.js-logo').forEach(function (box) {
+    box.textContent = '';
+    box.appendChild(makeImg(CONFIG.logoUrl, 'দাওয়াহ মুভমেন্ট গোপালগঞ্জ'));
+  });
+}
 
   if (CONFIG.bannerUrl) {
-    var banner = $('#banner');
+    var banner = $('#bannerBox');
     if (banner) {
       banner.textContent = '';
       banner.appendChild(makeImg(CONFIG.bannerUrl, 'প্রতিযোগিতার ব্যানার'));
