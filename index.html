@@ -2973,17 +2973,18 @@ form.action =
   form.target = 'hiddenGoogleFormFrame';
   form.style.display = 'none';
 
-  var fields = {
-    'entry.5165157': payload.name,
-    'entry.45246055': payload.group === 'A' ? 'Group K' : 'Group KH',
-    'entry.1806648470': payload.upazila,
-    'entry.215430256': payload.gender === 'Male' ? 'Male' : 'Female',
-    'entry.2016081186': payload.mobile,
-    'entry.1604236925': payload.institute,
-    'entry.359857660': payload.email,
-    'entry.730493845': payload.paymentType,
-    'entry.1005131652': payload.last4
-  };
+ 
+var fields = {
+    'entry.415577344': payload.name,
+    'entry.1358293307': payload.group === 'A' ? 'Group K' : 'Group KH',
+    'entry.957837319': payload.upazila,
+    'entry.1023529118': payload.gender === 'Male' ? 'Male' : 'Female',
+    'entry.655895208': payload.mobile,
+    'entry.905311122': payload.institute,
+    'entry.407601229': payload.paymentType,
+    'entry.697339762': payload.last4
+};
+
 
   for (var name in fields) {
     var input = document.createElement('input');
