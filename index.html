@@ -2974,16 +2974,32 @@ form.action =
   form.style.display = 'none';
 
  
+
 var fields = {
-    'entry.415577344': payload.name,
-    'entry.1358293307': payload.group === 'A' ? 'Group K' : 'Group KH',
-    'entry.957837319': payload.upazila,
-    'entry.1023529118': payload.gender === 'Male' ? 'Male' : 'Female',
-    'entry.655895208': payload.mobile,
-    'entry.905311122': payload.institute,
-    'entry.407601229': payload.paymentType,
-    'entry.697339762': payload.last4
+  'entry.415577344': payload.name,
+
+  'entry.1358293307':
+    payload.group === 'A' ? 'Group K' : 'Group KH',
+
+  'entry.957837319': payload.upazila,
+
+  'entry.655895208': payload.mobile,
+
+  'entry.1023529118':
+    payload.gender === 'Male' ? 'Male' : 'Female',
+
+  'entry.905311122': payload.institute,
+
+  'entry.771751350': payload.email,
+
+  'entry.407601229':
+    payload.paymentType === 'bKash'
+      ? 'Bkash'
+      : payload.paymentType,
+
+  'entry.697339762': payload.last4
 };
+
 
 
   for (var name in fields) {
